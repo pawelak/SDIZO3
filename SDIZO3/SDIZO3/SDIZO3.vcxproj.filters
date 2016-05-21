@@ -30,6 +30,9 @@
     <ClInclude Include="TravellingSalesman.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Knapsack.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -42,6 +45,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TravellingSalesman.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Knapsack.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

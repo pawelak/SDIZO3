@@ -6,7 +6,9 @@ class TravellingSalesman
 	vector <vector <int> > neighborsTS;
 	vector <int> listVisited;
 	vector <int>  tmp;
-	int totalCostG,startTop;
+	vector <int> forPermutation;
+	vector <int> memBestWay;
+	int totalCostG,startTop, memBestSUMCost;
 
 public:
 	TravellingSalesman();
@@ -15,6 +17,10 @@ public:
 	void readFromFile();
 	void printNL();
 	void greedy();
+	void showResultG();
 	void showResult();
+	void bruteForce(int k);
+	void showResultB();
+	void bruteForce();
 };
 

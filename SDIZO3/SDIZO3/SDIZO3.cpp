@@ -4,19 +4,26 @@
 #include "stdafx.h"
 #include "Data.h"
 #include "TravellingSalesman.h"
+#include "Knapsack.h"
 
 
 int main()
 {
 	Data d;
 	//d.generateFileTS();
-	//d.generateFileK();
-	TravellingSalesman ts;
-	ts.readFromFile();
+	d.generateFileK();
+	/*TravellingSalesman ts;
+
 	ts.printNL();
 	ts.greedy();
-	ts.showResult();
-
+	ts.showResultG();
+	ts.bruteForce(0);
+	ts.showResultB();
+*/
+	Knapsack k;
+	k.dynamic();
+	k.showResultTAB();
+	k.showResult();
 
     return 0;
 }

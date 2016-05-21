@@ -8,7 +8,7 @@ Data::Data()
 	ile = 9;
 	towns = 5;
 	capacity = 10;
-	items = 10;
+	items = 5;
 	weightMax = 6;
 	profitMax = 6;
 }
