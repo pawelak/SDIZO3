@@ -7,7 +7,7 @@ Data::Data()
 	od = 1;
 	ile = 9;
 	towns = 5;
-	capacity = 10;
+	capacity = 6;
 	items = 5;
 	weightMax = 6;
 	profitMax = 6;
@@ -63,13 +63,12 @@ void Data::generateFileK()
 	int weight, profit;
 
 	fstream file("plikK.txt", ios::out);
-	file << capacity << "\n";
+	file << capacity << " " << items << "\n";
 	if (file.good())
 	{
 		for (int i = 0; i < items; i++)
 		{
 			file << (rand() % weightMax + 1) << " " << (rand() % profitMax + 1) << "\n";
-
 		}
 		file.close();
 	}

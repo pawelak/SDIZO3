@@ -18,9 +18,7 @@ public:
 	void printNL();
 	void greedy();
 	void showResultG();
-	void showResult();
 	void bruteForce(int k);
 	void showResultB();
-	void bruteForce();
 };
 

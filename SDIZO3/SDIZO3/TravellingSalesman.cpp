@@ -112,15 +112,14 @@ void TravellingSalesman::showResultG()		//printuje wyniki dla algorytmu zach³ann
 
 void TravellingSalesman::bruteForce(int k)		//algorytm bruteforce (rekurencyjny)
 {
-	static int level = -1;
+	static int level = 0;
 	level = level + 1;
 	forPermutation[k] = level;
 	if (level == towns)
 	{
 		int h=0;
-
 		for (int i = 0; i < towns - 1; i++)
-			h += neighborsTS[(forPermutation[i]) - 1][(forPermutation[i+1])-1];
+			h += neighborsTS[(forPermutation[i])-1][(forPermutation[i+1])-1];
 
 		if (h<memBestSUMCost)
 		{

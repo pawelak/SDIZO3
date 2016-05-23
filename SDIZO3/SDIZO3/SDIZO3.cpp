@@ -11,19 +11,23 @@ int main()
 {
 	Data d;
 	//d.generateFileTS();
-	d.generateFileK();
-	/*TravellingSalesman ts;
+	//d.generateFileK();
 
+	TravellingSalesman ts;
 	ts.printNL();
 	ts.greedy();
 	ts.showResultG();
 	ts.bruteForce(0);
 	ts.showResultB();
-*/
+
+	cout << "\n-----------------------\n" << endl;
 	Knapsack k;
 	k.dynamic();
 	k.showResultTAB();
-	k.showResult();
+	k.showResultG();
+	cout << endl;
+	k.bruteForce(0);
+	k.showResultB();
 
     return 0;
 }
