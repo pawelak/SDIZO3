@@ -12,7 +12,10 @@ class TravellingSalesman
 
 public:
 	TravellingSalesman();
+	TravellingSalesman(string a);
 	~TravellingSalesman();
+
+	void readFromFile(string a);
 
 	void readFromFile();
 	void printNL();

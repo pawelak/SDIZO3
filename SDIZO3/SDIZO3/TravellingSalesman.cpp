@@ -2,9 +2,9 @@
 #include "TravellingSalesman.h"
 
 
-TravellingSalesman::TravellingSalesman()
+TravellingSalesman::TravellingSalesman(string a)
 {
-	readFromFile();
+	readFromFile(a);
 	startTop = 0;
 	memBestSUMCost = 2147483647;
 	for (int i = 0; i < towns; i++)
@@ -21,12 +21,12 @@ TravellingSalesman::~TravellingSalesman()
 }
 
 
-void TravellingSalesman::readFromFile()			// czyta z pliku
+void TravellingSalesman::readFromFile(string a)			// czyta z pliku
 {
-	fstream file("plikTS.txt", ios::in);
+	fstream file(a, ios::in);
 	int help;
 	if (file.is_open()) 
-	{
+	{	
 		file >> towns;
 		if (file.fail())
 			cout << "blad wczytywania pliku" << endl;

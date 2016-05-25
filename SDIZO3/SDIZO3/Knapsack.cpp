@@ -2,10 +2,10 @@
 #include "Knapsack.h"
 
 
-Knapsack::Knapsack()
+Knapsack::Knapsack(string a)
 {
 	
-	readFromFile();
+	readFromFile(a);
 	for (int i = 0; i < items; i++)
 	{
 		forPermutation.push_back(0);
@@ -17,11 +17,11 @@ Knapsack::~Knapsack()
 {
 }
 
-void Knapsack::readFromFile() 
+void Knapsack::readFromFile(string a)
 {
-	
 
-	fstream file("plikK.txt", ios::in);
+
+	fstream file(a, ios::in);
 	int tmp, help2;
 
 	if (file.is_open()) {
@@ -50,7 +50,6 @@ void Knapsack::readFromFile()
 		cout << "blad wczytywania pliku" << endl;
 }
 
-
 void Knapsack::dynamic() 
 {
 	help.clear();
@@ -60,13 +59,6 @@ void Knapsack::dynamic()
 		result.push_back(vector<int>(capacity + 1, 0));
 	}
 
-	/*for (int i = 0; i < result.size(); i++) {
-		for (int j = 0; j < capacity + 1; j++) {
-			cout << result[i][j] << " ";
-		}
-		cout << endl;
-	}*/
-	cout << endl;
 	for (int i = 1; i < items + 1; i++) {
 
 		for (int j = 0; j < capacity + 1; j++) 
@@ -104,57 +96,6 @@ void Knapsack::showResultTAB()
 void Knapsack::showResultG()
 {
 	vector < vector<int> > whichItems;
-	//row.clear();
-
-	
-	//int y = capacity;
-	//int x = items;
-	//int tmp;
-	//while (true) {
-	//	
-	//	if (x > 1) {
-	//		if (result[x][y] != result[x - 1][y]) 
-	//		{
-	//			cout << "ka" << endl;
-	//			tmp = itemsTab[x - 1][0];
-	//			help.push_back(itemsTab[x - 1][0]);
-	//			help.push_back(itemsTab[x - 1][1]);
-	//			whichItems.push_back(help);
-	//			help.clear();
-
-
-	//			if (x == items && y == capacity)
-	//				break;
-
-	//			x--;
-
-	//			if (x == 0 && y == 0)
-	//				break;
-
-	//		}
-	//		else 
-	//		{
-	//			cout << "ee" << endl;
-	//			x--;
-	//			//if (x <= 0)x = 1;
-	//			while (result[x][y] == result[x - 1][y])
-	//				x--;
-
-	//			//x--;
-	//			
-	//			tmp = itemsTab[x - 1][0];
-	//			y -= tmp;
-
-	//			help.push_back(itemsTab[x][0]);
-	//			help.push_back(itemsTab[x][1]);
-	//			whichItems.push_back(help);
-	//			help.clear();
-
-	//		}
-	//	}
-	//	else
-	//		break;
-	//}
 
 	int w = capacity;
 	int i = items;
@@ -174,8 +115,6 @@ void Knapsack::showResultG()
 	}
 	
 
-
-
 	cout << endl;
 	cout << "waga bydla to " << result[items][capacity] << endl;
 	for (int i = 0; i < whichItems.size(); i++) {
@@ -192,12 +131,6 @@ void Knapsack::bruteForce(int k)
 
 	if (level == items)
 	{
-
-		for (int i = 0; i < items; i++)
-		{
-			cout << forPermutation[i] << " ";
-		}
-		cout << endl;
 		int h = 0;
 		int b = 0;
 		int i;
@@ -214,28 +147,21 @@ void Knapsack::bruteForce(int k)
 				break;
 			}
 		}
-	
 		if (b > totalBenefits)
 		{
 
 			totalBenefits = b;
 			memBestSet.clear();
 			help.clear();
-			for (int j = 0; j < i+1; j++)
+			for (int j = 0; j < i; j++)
 			{
 				help.push_back(itemsTab[(forPermutation[j] - 1)][0]);
 				help.push_back(itemsTab[(forPermutation[j] - 1)][1]);
 				memBestSet.push_back(help);
 				help.clear();
-				cout << "weszlo: ";
-				for (int j = 0; j< items; j++)
-				{
-					cout << forPermutation[j]-1 << " ";
-				}
-				cout << endl;
-				//cout << itemsTab[forPermutation[j] - 1][0] << " " << itemsTab[forPermutation[j] - 1][1] << endl;
+
 			}
-			//cout << endl;
+
 		}
 	}
 	else 

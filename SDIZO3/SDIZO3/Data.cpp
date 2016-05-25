@@ -7,8 +7,6 @@ Data::Data()
 	od = 1;
 	ile = 9;
 	towns = 5;
-	capacity = 6;
-	items = 5;
 	weightMax = 6;
 	profitMax = 6;
 }
@@ -17,8 +15,9 @@ Data::~Data()
 {
 }
 
-void Data::generateFileTS()		//dla komiwoja¿era
+void Data::generateFileTS(int miast)		//dla komiwoja¿era
 {
+	towns = miast;
 	srand(time(NULL));
 	vector <vector < int> > tmp;
 
@@ -39,7 +38,7 @@ void Data::generateFileTS()		//dla komiwoja¿era
 		}
 	}
 
-	fstream file("plikTS.txt", ios::out);
+	fstream file("plikTS.txt", ios::out);			//u tu spisuje do pliku 
 	if (file.good()) 
 	{
 		file << towns << "\n";
@@ -51,27 +50,30 @@ void Data::generateFileTS()		//dla komiwoja¿era
 		}
 		file.close();
 	}
-
+	cout << "wygenerowano plikTS.txt" << endl;
 	tmp.clear();
 }
 
 
 	
-void Data::generateFileK() 
+void Data::generateFileK(int it, int c) 
 {
+	items = it;
+	capacity = c;
 	srand(time(NULL));
 	int weight, profit;
 
 	fstream file("plikK.txt", ios::out);
-	file << capacity << " " << items << "\n";
+	file << capacity << " " << items << "\n";		
 	if (file.good())
-	{
-		for (int i = 0; i < items; i++)
+	{		
+		for (int i = 0; i < items; i++)			//zwykle losowanie po 2
 		{
 			file << (rand() % weightMax + 1) << " " << (rand() % profitMax + 1) << "\n";
 		}
 		file.close();
 	}
+	cout << "wygenerowano plikK.txt" << endl;
 
 }
 	

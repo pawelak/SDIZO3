@@ -13,12 +13,13 @@ class Knapsack
 
 public:
 	Knapsack();
+	Knapsack(string a);
 	~Knapsack();
 	void readFromFile();
+	void readFromFile(string a);
 	void dynamic();
 	void showResultTAB();
 	void showResultG();
-	void showResult();
 	void bruteForce(int k);
 	void showResultB();
 };
