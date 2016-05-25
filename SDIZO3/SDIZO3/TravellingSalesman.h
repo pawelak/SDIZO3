@@ -11,13 +11,11 @@ class TravellingSalesman
 	int totalCostG,startTop, memBestSUMCost;
 
 public:
-	TravellingSalesman();
 	TravellingSalesman(string a);
 	~TravellingSalesman();
 
 	void readFromFile(string a);
 
-	void readFromFile();
 	void printNL();
 	void greedy();
 	void showResultG();

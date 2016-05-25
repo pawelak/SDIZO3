@@ -18,6 +18,11 @@ TravellingSalesman::TravellingSalesman(string a)
 
 TravellingSalesman::~TravellingSalesman()
 {
+	neighborsTS.clear();
+	listVisited.clear();
+	tmp.clear();
+	forPermutation.clear();
+	memBestWay.clear();
 }
 
 
@@ -62,7 +67,7 @@ void TravellingSalesman::printNL()			//printuje macierz s¹siedztwa
 
 
 
-void TravellingSalesman::greedy()		//algorytm zach³anny dla problemu komiwoja¿era
+void TravellingSalesman::greedy()		//algorytm zach³anny dla problemu komiwoja¿era, nierze co tansze w najnlszej perspektywie
 {
 	int cost = 0;
 	int currentT;

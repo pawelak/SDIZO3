@@ -4,7 +4,7 @@
 #include "Knapsack.h"
 #include "TravellingSalesman.h"
 
-
+//klasyczne menu przy ujeñciu wzorca budowniczego nic odkryczego 
 
 MENU::MENU()
 {
@@ -68,13 +68,9 @@ void MENU::MENUGenerate()
 		case 1:
 		{
 			int ile;
-			bool a = 0;
-			do
-			{
-				cout << "Podaj ilosc miast: ";
-				cin >> ile;
-				if (ile > 0) a = 1;
-			} while (!a);
+
+			cout << "Podaj ilosc miast: ";
+			cin >> ile;
 
 			Data d;
 			d.generateFileTS(ile);

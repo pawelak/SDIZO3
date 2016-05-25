@@ -10,6 +10,5 @@ public:
 	void MENUGenerate();
 	void MENUK();
 	void MENUTS();
-	void MENUG();
 };
 

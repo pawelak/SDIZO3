@@ -5,7 +5,7 @@
 Knapsack::Knapsack(string a)
 {
 	
-	readFromFile(a);
+	readFromFile(a);				//gwaranyt ¿e zawsze coœ jest w items
 	for (int i = 0; i < items; i++)
 	{
 		forPermutation.push_back(0);
@@ -15,6 +15,10 @@ Knapsack::Knapsack(string a)
 
 Knapsack::~Knapsack()
 {
+	forPermutation.clear();
+	itemsTab.clear();
+	result.clear();
+	memBestSet.clear();
 }
 
 void Knapsack::readFromFile(string a)
@@ -22,7 +26,7 @@ void Knapsack::readFromFile(string a)
 
 
 	fstream file(a, ios::in);
-	int tmp, help2;
+	int tmp;
 
 	if (file.is_open()) {
 		file >> capacity;
@@ -54,19 +58,15 @@ void Knapsack::dynamic()
 {
 	help.clear();
 	
-	for (int i = 0; i < items +1; i++) 
-	{
+	for (int i = 0; i < items +1; i++)					//w zasadzie to nie caly algorytm bo tylko tworzy tablice i tyle 
 		result.push_back(vector<int>(capacity + 1, 0));
-	}
 
 	for (int i = 1; i < items + 1; i++) {
 
 		for (int j = 0; j < capacity + 1; j++) 
 		{
 			if (itemsTab[i - 1][0] > j) 
-			{
 				result[i][j] = result[i - 1][j];
-			}
 			else 
 			{
 				if (result[i - 1][j] > result[i - 1][j - itemsTab[i - 1][0]] + itemsTab[i - 1][1])
@@ -78,7 +78,6 @@ void Knapsack::dynamic()
 	}
 	
 }
-
 
 void Knapsack::showResultTAB()
 {
@@ -93,7 +92,7 @@ void Knapsack::showResultTAB()
 }
 
 
-void Knapsack::showResultG()
+void Knapsack::showResultG()		//tutaj zczytuje prawy dolny element czyli wynik i przechodzi przez tablice szukajac elementow
 {
 	vector < vector<int> > whichItems;
 
@@ -116,15 +115,16 @@ void Knapsack::showResultG()
 	
 
 	cout << endl;
-	cout << "waga bydla to " << result[items][capacity] << endl;
+	cout << "koszt zabranych rzeczy (benefit): " << result[items][capacity] << endl;
 	for (int i = 0; i < whichItems.size(); i++) {
 		cout << whichItems[i][0] << " " << whichItems[i][1] << endl;
 	}
+	whichItems.clear();
 }
 
 
-void Knapsack::bruteForce(int k)
-{
+void Knapsack::bruteForce(int k)		//³opatologicznie dostaje vektor d³ugoœci takiej ile jest itemów i permutuje je a¿ waga nie jest wiêksza niŸ	
+{										//pojemnoœæ plecka jeœli jest to sprawdza jaki z tego profit i jeœli wiêkszy ni¿ pamietany to zapisuje 
 	static int level = -1;
 	level = level + 1;
 	forPermutation[k] = level;
@@ -177,7 +177,7 @@ void Knapsack::bruteForce(int k)
 
 
 
-void Knapsack::showResultB()
+void Knapsack::showResultB()			//pinntowanie bruteforca
 {
 	cout << "pomiesci sie: " << endl;
 	for (int i = 0; i < memBestSet.size(); i++)
